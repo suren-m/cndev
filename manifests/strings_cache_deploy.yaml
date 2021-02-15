@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: strings-app
+  name: strings-cache
+  namespace: strings-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: strings-cache
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: strings-cache
+    spec:
+      containers:
+      - image: redis:6.0.9
+        name: strings-cache
+        resources: {}
+status: {}

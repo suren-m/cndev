@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>strings_api</RootNamespace>
+    <UserSecretsId>4c91cfc48971a764527c7b3161a05e91</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="ServiceStack.Redis" Version="5.8.0" />
+  </ItemGroup>
+</Project>
