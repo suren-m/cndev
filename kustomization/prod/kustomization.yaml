@@ -1,22 +1,21 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - namespace.yaml
-  - ../base
+- namespace.yaml
+- ../base
 patchesStrategicMerge:
-  - overrides.yaml
+- overrides.yaml
 namespace: prod
 commonLabels:
   environment: prod
 
 # kustomize edit set image surenmcode/strings-api=surenmcode/strings-api:5.5
 images:
-  - name: surenmcode/strings-frontend
-    newName: surenmcode/strings-frontend
-    newTag: "2.2"
-  - name: surenmcode/strings-api
-    newName: surenmcode/strings-api
-    newTag: "1.0"
-  - name: redis
-    newName: redis
-    newTag: "6.0.9"
+- name: redis
+  newName: redis
+  newTag: 6.0.9
+- name: surenmcode/strings-api
+  newName: surenmcode/latest
+- name: surenmcode/strings-frontend
+  newName: surenmcode/strings-frontend
+  newTag: "2.2"
