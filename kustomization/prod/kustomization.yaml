@@ -1,0 +1,9 @@
+bases:
+  - ../base
+resources:
+  - namespace.yaml
+patches:
+  - overrides.yaml
+namespace: prod
+commonLabels:
+  environment: prod

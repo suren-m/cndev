@@ -1,0 +1,7 @@
+resources:
+  - strings_api_deploy.yaml
+  - strings_api_svc.yaml
+  - strings_cache_deploy.yaml
+  - strings_cache_svc.yaml
+  - strings_frontend_deploy.yaml
+  - strings_frontend_svc.yaml

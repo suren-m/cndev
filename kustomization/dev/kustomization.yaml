@@ -1,0 +1,9 @@
+bases:
+  - ../base
+resources:
+  - namespace.yaml
+patches:
+  - overrides.yaml
+namespace: dev
+commonLabels:
+  environment: dev
