@@ -33,6 +33,15 @@ jobs:
           context: ./strings-api
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/strings-api:latest
-
-    
+      - 
+        name: Install Kustomize
+        run: |
+          KUSTOMIZE=3.5.5
+          echo "downloading kustomize ${KUSTOMIZE}"
+          curl -sL https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE}/kustomize_v${KUSTOMIZE}_linux_amd64.tar.gz | \
+          tar xz && mv kustomize /usr/local/bin/kustomize
+          kustomize version
+      
+        
+            
           
