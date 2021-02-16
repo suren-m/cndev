@@ -33,6 +33,9 @@ jobs:
           context: ./strings-api
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/strings-api:latest
+  publish:  
+    runs-on: ubuntu-latest
+    steps:
       - 
         name: Install Kustomize
         run: |
@@ -41,7 +44,21 @@ jobs:
           curl -sL https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE}/kustomize_v${KUSTOMIZE}_linux_amd64.tar.gz | \
           tar xz && sudo mv kustomize /usr/local/bin/kustomize
           kustomize version
+      - 
+        name: Kustomize edit
+        run: |
+          cd ./kustomization/prod 
+          kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/strings-api=${{ secrets.DOCKERHUB_USERNAME }}/latest          
+      - 
+        uses: actions/checkout@v2
+      - 
+        name: Update kustomization
+        run: |          
+          git config --global user.name 'workflow_action'
+          git config --global user.email 'workflow_action@users.noreply.github.com'
+          git commit -am "update image version on kustomization"
+          git push
+          
       
-        
             
           
