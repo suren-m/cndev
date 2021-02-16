@@ -15,7 +15,7 @@ images:
   newName: redis
   newTag: 6.0.9
 - name: surenmcode/strings-api
-  newName: surenmcode/latest
+  newName: github.run_number
 - name: surenmcode/strings-frontend
   newName: surenmcode/strings-frontend
   newTag: "2.2"
