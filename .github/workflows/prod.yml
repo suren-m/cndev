@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      version: $GITHUB_RUN_NUMBER
+      version: github.run_number
     steps:
       -
         name: Set up QEMU
@@ -39,7 +39,7 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     env:
-      version: $GITHUB_RUN_NUMBER
+      version: github.run_number
     steps:
       - 
         name: Install Kustomize
