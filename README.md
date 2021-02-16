@@ -1,5 +1,15 @@
 # cndev
 
+### build and deploy
+```bash
+kustomize build . | kubectl apply -f -
+```
+
+### delete / uninstall
+```bash
+kustomize build . | kubectl delete -f -
+```
+
 ### Edit Kustomize file per env
 Example to update image tag
 ```bash
