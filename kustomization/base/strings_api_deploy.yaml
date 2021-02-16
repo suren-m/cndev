@@ -18,7 +18,7 @@ spec:
         app: strings-api
     spec:
       containers:
-        - image: surenmcode/strings-api:1.0
+        - image: surenmcode/strings-api
           name: strings-api
           resources: {}
 status: {}

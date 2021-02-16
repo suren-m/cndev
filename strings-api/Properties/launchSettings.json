@@ -28,6 +28,10 @@
     },
     "Bridge to Kubernetes": {
       "commandName": "AzureDevSpacesLocal"
+    },
+    "local_bridge": {
+      "commandName": "AzureDevSpacesLocal",
+      "launchBrowser": true
     }
   }
 }

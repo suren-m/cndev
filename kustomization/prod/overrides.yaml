@@ -6,6 +6,11 @@ metadata:
 spec:
   replicas: 3
 
+# images:
+#  - name: surenmcode/strings-frontend
+#  - newName: surenmcode/strings-frontend
+#  - newTag: 3.55
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -14,3 +19,8 @@ metadata:
   name: strings-api
 spec:
   replicas: 3
+
+# images:
+#  - name: surenmcode/strings-api
+#  - newName: surenmcode/strings-api
+#  - newTag: 3.55-dev

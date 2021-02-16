@@ -18,7 +18,7 @@ spec:
         app: strings-cache
     spec:
       containers:
-        - image: redis:6.0.9
+        - image: redis
           name: strings-cache
           resources: {}
 status: {}
