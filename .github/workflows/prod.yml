@@ -33,7 +33,8 @@ jobs:
           context: ./strings-api
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/strings-api:latest
-  publish:  
+  update:  
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - 
@@ -45,12 +46,12 @@ jobs:
           tar xz && sudo mv kustomize /usr/local/bin/kustomize
           kustomize version
       - 
+        uses: actions/checkout@v2
+      - 
         name: Kustomize edit
         run: |
           cd ./kustomization/prod 
           kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/strings-api=${{ secrets.DOCKERHUB_USERNAME }}/latest          
-      - 
-        uses: actions/checkout@v2
       - 
         name: Update kustomization
         run: |          
