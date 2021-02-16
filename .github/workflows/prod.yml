@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      version: github.run_number
+      tag_version: $GITHUB_RUN_NUMBER
     steps:
       -
         name: Set up QEMU
@@ -34,7 +34,7 @@ jobs:
         with:
           context: ./strings-api
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/strings-api:${{ env.version }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/strings-api:${{ env.tag_version }}
   update:  
     needs: [build]
     runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
         name: Kustomize edit
         run: |
           cd ./kustomization/prod 
-          kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/strings-api=${{ env.version }}        
+          kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/strings-api=${{ env.tag_version }}        
       - 
         name: Update kustomization
         run: |          
