@@ -34,7 +34,7 @@ jobs:
         with:
           context: ./strings-api
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/strings-api:${{ env.tag_version }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/strings-api:${{ github.run_number }}
   update:  
     needs: [build]
     runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
         name: Kustomize edit
         run: |
           cd ./kustomization/prod 
-          kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/strings-api=${{ env.tag_version }}        
+          kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/strings-api=${{ github.run_number }}    
       - 
         name: Update kustomization
         run: |          
