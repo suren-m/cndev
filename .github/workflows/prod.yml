@@ -66,6 +66,11 @@ jobs:
         name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
+        with:
+          labels: gitops,kustomize,argocd
+          title: Publish new version
+          reviewers: suren-m
+          assignees: suren-m
       - 
         name: Check outputs
         run: |
