@@ -69,6 +69,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
+          token: ${{ secrets.PAT }}
           labels: gitops,kustomize,argocd
           title: Publish new version
           reviewers: suren-m
