@@ -73,8 +73,8 @@ jobs:
         name: Kustomize edit
         run: |
           cd ./kustomization/prod 
-          kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/strings-api=${{ secrets.DOCKERHUB_USERNAME }}/strings-api:prod-${{ github.run_number }}    
-          kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/strings-frontend=${{ secrets.DOCKERHUB_USERNAME }}/strings-frontend:prod-${{ github.run_number }}    
+          kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/strings-api=${{ secrets.DOCKERHUB_USERNAME }}/strings-api:main-${{ github.run_number }}    
+          kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/strings-frontend=${{ secrets.DOCKERHUB_USERNAME }}/strings-frontend:main-${{ github.run_number }}    
       - 
         name: Update kustomization
         run: |          
