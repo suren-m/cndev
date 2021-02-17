@@ -61,9 +61,16 @@ jobs:
         run: |          
           git config --global user.name 'workflow_action'
           git config --global user.email 'workflow_action@users.noreply.github.com'
-          git commit -am "update image version on kustomization"
-          git push
-          
+          git commit -am "update image version on kustomization"          
+      - 
+        name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+      - 
+        name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
       
             
           
