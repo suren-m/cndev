@@ -9,8 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      tag_version: $GITHUB_RUN_NUMBER
     steps:
       -
         name: Set up QEMU
@@ -28,6 +26,10 @@ jobs:
         name: checkout repo
         uses: actions/checkout@v2
       - 
+        name: set output for short sha
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - 
         name: Build and push strings-api
         id: docker_strings_api_build
         uses: docker/build-push-action@v2
@@ -36,7 +38,7 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/strings-api:prod-${{ github.run_number }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/strings-api:prod-${{ github.sha }}            
+            ${{ secrets.DOCKERHUB_USERNAME }}/strings-api:prod-${{ steps.vars.outputs.sha_short }}            
             ${{ secrets.DOCKERHUB_USERNAME }}/strings-api:prod
       - 
         name: Build and push strings-frontend
@@ -47,7 +49,7 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/strings-frontend:prod-${{ github.run_number }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/strings-frontend:prod-${{ github.sha }}            
+            ${{ secrets.DOCKERHUB_USERNAME }}/strings-frontend:prod-${{ steps.vars.outputs.sha_short }}            
             ${{ secrets.DOCKERHUB_USERNAME }}/strings-frontend:prod
   update:  
     needs: [build]
