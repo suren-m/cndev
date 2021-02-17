@@ -42,7 +42,7 @@ namespace strings_frontend.Pages
             _logger.LogInformation("\n...Retrieving Data...\n");
 
             var request = new System.Net.Http.HttpRequestMessage();
-            var query = $"http://strings-api.strings-app/stringlength/{input}";
+            var query = $"http://strings-api/stringlength/{input}";
             //var query = $"http://localhost:8080/stringlength/{input}";
             request.RequestUri = new Uri(query);
             
