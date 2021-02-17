@@ -52,7 +52,7 @@ jobs:
       - 
         uses: actions/checkout@v2
         with:
-          repository: 'https://github.com/suren-m/cndev-config.git'
+          repository: 'suren-m/cndev-config'
       - 
         name: Kustomize edit
         run: |
