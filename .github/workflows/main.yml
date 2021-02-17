@@ -87,7 +87,7 @@ jobs:
           token: ${{ secrets.PAT }}
           labels: gitops,kustomize,argocd
           title: Publish new version
-          branch: create-pull-request/prod-deploy
+          branch: deploy/prod
           reviewers: suren-m
           assignees: suren-m
       - 
