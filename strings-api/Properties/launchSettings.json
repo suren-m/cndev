@@ -30,8 +30,7 @@
       "commandName": "AzureDevSpacesLocal"
     },
     "local_bridge": {
-      "commandName": "AzureDevSpacesLocal",
-      "launchBrowser": true
+      "commandName": "AzureDevSpacesLocal"
     }
   }
 }
