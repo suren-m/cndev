@@ -32,6 +32,9 @@
     "cndev-bridge-to-kubernetes": {
       "commandName": "AzureDevSpacesLocal",
       "launchBrowser": true
+    },
+    "Live-Demo-Bridge-Strings-Api": {
+      "commandName": "AzureDevSpacesLocal"
     }
   }
 }
