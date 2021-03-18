@@ -35,6 +35,9 @@
     },
     "Live-Demo-Bridge-Strings-Api": {
       "commandName": "AzureDevSpacesLocal"
+    },
+    "local-kube-debug": {
+      "commandName": "AzureDevSpacesLocal"
     }
   }
 }
