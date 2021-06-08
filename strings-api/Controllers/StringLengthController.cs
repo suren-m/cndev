@@ -29,8 +29,13 @@ namespace strings_api.Controllers
 
         [HttpGet]
         [Route("{input}/")]
-        public StringResult Get(string input)
-        {            
+        public ActionResult Get(string input)
+        {
+            int status = 200;
+            if (int.TryParse(input, out status))
+            {
+                return StatusCode(status);
+            }
             var res = new StringResult();
             res.Input = input;
             using (var cache = _redisPool.GetClient())
@@ -47,7 +52,7 @@ namespace strings_api.Controllers
                     cache.Set(input, length);                    
                 }                
             }                 
-            return res;          
+            return Ok(res);          
         }
 
         public class StringResult {
