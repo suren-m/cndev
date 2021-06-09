@@ -36,7 +36,7 @@ namespace strings_frontend.Pages
         // }
 
         public async Task OnGetAsync(string input){
-            Message = "Making API request";
+            Message = string.Empty;
             if (string.IsNullOrEmpty(input)) {
                 return;
             }             
