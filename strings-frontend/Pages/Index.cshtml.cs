@@ -27,6 +27,7 @@ namespace strings_frontend.Pages
             _logger = logger;
             _clientFactory = clientFactory;
             StringResult = new StringResult();
+            Message = string.Empty;
         }
 
         // public void OnGet()
@@ -35,7 +36,7 @@ namespace strings_frontend.Pages
         // }
 
         public async Task OnGetAsync(string input){
-            Message = "Sending request to API";
+            Message = "Making API request";
             if (string.IsNullOrEmpty(input)) {
                 return;
             }             
