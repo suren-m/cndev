@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: error-trigger
+  name: error-trigger
+  namespace: load-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: error-trigger
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: error-trigger
+    spec:
+      containers:
+      - image: surenmcode/utils:alpine
+        name: utils
+        command:
+        - bin/sh
+        - -c
+        - while (curl 10.0.16.99/strings-app?input=500) do { sleep 4s; } done
+        resources: {}
+status: {}

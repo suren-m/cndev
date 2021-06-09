@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: greeter
+  name: greeter
+  namespace: load-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: greeter
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: greeter
+    spec:
+      containers:
+      - image: surenmcode/utils:alpine
+        name: utils
+        command:
+        - bin/sh
+        - -c
+        - while (curl 10.0.16.99/strings-app?input=hello-$RANDOM-from-greeter) do { sleep 2s; } done
+        resources: {}
+status: {}
