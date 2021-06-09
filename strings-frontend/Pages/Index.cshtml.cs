@@ -19,12 +19,15 @@ namespace strings_frontend.Pages
         public string StringInput { get; set;}
 
         public StringResult StringResult { get; set;}
+
+        public string Message { get; set;  }
         
         public IndexModel(ILogger<IndexModel> logger, IHttpClientFactory clientFactory)
         {
             _logger = logger;
             _clientFactory = clientFactory;
             StringResult = new StringResult();
+            Message = string.Empty;
         }
 
         // public void OnGet()
@@ -32,8 +35,8 @@ namespace strings_frontend.Pages
         //     var test = StringResult;
         // }
 
-        public async Task OnGetAsync(string input){        
-
+        public async Task OnGetAsync(string input){
+            Message = string.Empty;
             if (string.IsNullOrEmpty(input)) {
                 return;
             }             
@@ -47,16 +50,26 @@ namespace strings_frontend.Pages
             request.RequestUri = new Uri(query);
             
             var response = await client.SendAsync(request);
-            var jsonResult = await response.Content.ReadAsStringAsync();
 
-            StringResult = JsonSerializer.Deserialize<StringResult>(
-                    jsonResult,
-                    new JsonSerializerOptions { 
-                        PropertyNameCaseInsensitive = true 
-                    }
-            );
+            if (!response.IsSuccessStatusCode)
+            {
+                Message = "Error. Received " + response.StatusCode.ToString();
+            } else
+            {
+                var jsonResult = await response.Content.ReadAsStringAsync();
 
-            _logger.LogInformation("\n...Finished Retrieving Data...\n");            
+                StringResult = JsonSerializer.Deserialize<StringResult>(
+                        jsonResult,
+                        new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive = true
+                        }
+                );
+
+                Message = "Request Success";
+                _logger.LogInformation("\n...Finished Retrieving Data...\n");
+
+            }
         }  
     }
 
