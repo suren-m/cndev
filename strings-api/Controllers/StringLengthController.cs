@@ -31,24 +31,27 @@ namespace strings_api.Controllers
         [Route("{input}/")]
         public ActionResult Get(string input)
         {
+            var res = new StringResult();
+            res.Input = input;
+
             int status = 200; 
             if (int.TryParse(input, out status)) // simulate errors
             {
                 return StatusCode(status);
             }
 
-            if (input == "retry") // simulate retry example based on some randomization
+           if (input == "retry") // simulate retry example based on some randomization
             {
                 var time = DateTime.UtcNow;
                 if (time.Second % 2 == 0) {
                     return StatusCode(503);
                  }  else  {
-                    return Ok(true);
+                    res.CacheHit = true;
+                    res.Length = 5;
+                    return Ok(res);
                 }
             }
-
-            var res = new StringResult();
-            res.Input = input;
+                        
             using (var cache = _redisPool.GetClient())
             {              
                 var data = cache.Get<string>(input);
