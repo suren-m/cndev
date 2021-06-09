@@ -39,7 +39,7 @@ namespace strings_api.Controllers
 
             if (input == "retry") // simulate retry example based on some randomization
             {
-                var time = new DateTime();
+                var time = DateTime.UtcNow;
                 if (time.Second % 2 == 0) {
                     return StatusCode(503);
                  }  else  {
