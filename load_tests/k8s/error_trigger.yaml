@@ -24,6 +24,6 @@ spec:
         command:
         - bin/sh
         - -c
-        - while (curl 10.0.16.99/strings-app?input=500) do { sleep 4s; } done
+        - while (curl strings-frontend.dev/strings-app?input=500) do { sleep 4s; } done
         resources: {}
 status: {}

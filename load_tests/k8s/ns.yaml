@@ -3,6 +3,8 @@ kind: Namespace
 metadata:
   creationTimestamp: null
   name: load-test
+  labels:
+    istio-injection: enabled
   annotations:
     linkerd.io/inject: enabled
 spec: {}

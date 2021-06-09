@@ -24,6 +24,6 @@ spec:
         command:
         - bin/sh
         - -c
-        - while (curl 10.0.16.99/strings-app?input=hello-$RANDOM-from-greeter) do { sleep 2s; } done
+        - while (curl strings-frontend.dev/strings-app?input=hello-$RANDOM-from-greeter) do { sleep 2s; } done
         resources: {}
 status: {}
