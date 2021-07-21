@@ -4,13 +4,13 @@
     ViewData["Title"] = "Home page";
 }
 
-<h2>Live demo - Service Mesh</h2>
+<h2>Live demo - July</h2>
 <div class="text-center">
     @Html.DisplayNameFor(model => model.StringInput)
-    <input asp-for="StringInput" type="text" value="@Model.StringInput"/>     
-    <button onclick="getLength()">Get Length</button>    
+    <input asp-for="StringInput" type="text" value="@Model.StringInput" />
+    <button onclick="getLength()">Get Length</button>
     <div>
-    Result
+        Result
         <p>Input: @Model.StringResult.Input</p>
         <p>Length: @Model.StringResult.Length</p>
         <p>CacheHit: @Model.StringResult.CacheHit</p>
