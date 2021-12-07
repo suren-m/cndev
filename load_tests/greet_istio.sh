@@ -5,7 +5,7 @@ do {
       i=$((i+1));
       req="10.0.16.110/strings-app?input=hello-$i";
       echo $req;
-      curl -I $req;    
+      curl -I -s $req;    
       sleep 1s;
    }
 done

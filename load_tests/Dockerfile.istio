@@ -1,0 +1,6 @@
+FROM alpine:latest
+WORKDIR app
+RUN apk update && apk add curl
+COPY greet_istio.sh greet_istio.sh
+RUN chmod +x ./greet_istio.sh
+ENTRYPOINT "./greet_istio.sh"
