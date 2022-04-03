@@ -84,13 +84,13 @@ jobs:
       - 
         name: Kustomize edit for linkerd-demo
         run: |
-          cd ./kustomization/prod 
+          cd ./kustomization/linkerd-demo 
           kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/strings-api=${{ secrets.DOCKERHUB_USERNAME }}/strings-api:main-${{ github.run_number }}    
           kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/strings-frontend=${{ secrets.DOCKERHUB_USERNAME }}/strings-frontend:main-${{ github.run_number }}    
       - 
         name: Kustomize edit for istio-demo
         run: |
-          cd ./kustomization/prod 
+          cd ./kustomization/linkerd-demo 
           kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/strings-api=${{ secrets.DOCKERHUB_USERNAME }}/strings-api:main-${{ github.run_number }}    
           kustomize edit set image ${{ secrets.DOCKERHUB_USERNAME }}/strings-frontend=${{ secrets.DOCKERHUB_USERNAME }}/strings-frontend:main-${{ github.run_number }}              
       - 
