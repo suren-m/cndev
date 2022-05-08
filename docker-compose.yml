@@ -1,0 +1,30 @@
+version: '3'
+services:
+  strings-cache:
+    image: docker.io/redis:7.0.0-bullseye
+    hostname: strings-cache
+    ports:
+      - "6379:6379"    
+    restart: unless-stopped  
+
+  strings-api:
+    build:
+      context: ./strings-api
+    depends_on:
+      - strings-cache
+    ports:
+      - "8088:80"        
+    environment:
+      CACHE_SERVICE: strings-cache
+    restart: unless-stopped
+    
+  strings-frontend:
+    build:
+      context: ./strings-frontend
+    depends_on:
+      - strings-api
+    ports:
+      - "8080:80"        
+    environment:
+      API_SERVICE: strings-api
+    restart: unless-stopped
